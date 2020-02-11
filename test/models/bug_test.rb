@@ -4,7 +4,7 @@ class BugTest < ActiveSupport::TestCase
 
   def setup
     @bug = Bug.create(title:"a title", description:"this is a long description",
-      issue_type:2, priority:1, status:0)
+      issue_type:2, priority:1, status:0, user_id: 2)
   end
   
   test "bug must be valid" do

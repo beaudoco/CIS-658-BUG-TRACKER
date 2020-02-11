@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div>
+   <%= form.label :user_id %>
+   <%= form.select :user_id,
+       options_for_select(User.all.collect {|u| ["#{u.lname},#{u.fname}", u.id]},
+         selected: (@bug.user ? @bug.user.id : User.first.id)), {} %>
+  </div>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>

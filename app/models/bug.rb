@@ -5,4 +5,6 @@ class Bug < ApplicationRecord
   
   validates :title, presence: true, length: {minimum: 5, maximum: 80}
   validates :description, presence: true, length: {minimum: 20, maximum: 600}
+  
+  belongs_to :user
 end
