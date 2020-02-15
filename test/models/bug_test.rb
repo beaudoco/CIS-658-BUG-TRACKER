@@ -7,10 +7,6 @@ class BugTest < ActiveSupport::TestCase
       issue_type:2, priority:1, status:0, user_id: 2)
   end
   
-  test "bug must be valid" do
-    assert @bug.valid?
-  end
-  
   test "title must be present" do
     @bug.title = ""
     assert_not @bug.valid?
@@ -60,7 +56,7 @@ class BugTest < ActiveSupport::TestCase
           @bug.issue_type vs
           assert true
         rescue
-          assert false, "#{vs} should be valid"
+          assert_not false, "#{vs} should be valid"
         end
       end
   end
@@ -69,7 +65,7 @@ class BugTest < ActiveSupport::TestCase
     invalid_priority = [-10,-1,5,10]
     invalid_priority.each do |is|
       begin
-        @bug.issue_type is
+        @bug.priority is
         assert false, "#{is} should be invalid"
       rescue
         assert true
@@ -81,10 +77,10 @@ class BugTest < ActiveSupport::TestCase
     valid_priority = [:low, :medium, :high]
     valid_priority.each do |vs|
       begin
-        @bug.issue_type vs
+        @bug.priority vs
         assert true
       rescue
-        assert false, "#{vs} should be valid"
+        assert_not false, "#{vs} should be valid"
       end
     end
   end
@@ -93,7 +89,7 @@ class BugTest < ActiveSupport::TestCase
     invalid_status = [-10,-1,5,10]
     invalid_status.each do |is|
       begin
-        @bug.issue_type is
+        @bug.status is
         assert false, "#{is} should be invalid"
       rescue
         assert true
@@ -105,10 +101,10 @@ class BugTest < ActiveSupport::TestCase
     valid_status = [:open, :closed, :monitor]
     valid_status.each do |vs|
       begin
-        @bug.issue_type vs
+        @bug.status vs
         assert true
       rescue
-        assert false, "#{vs} should be valid"
+        assert_not false, "#{vs} should be valid"
       end
     end
   end
