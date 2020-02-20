@@ -6,7 +6,7 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX}
   
   validates :thumbnail, allow_blank: true,
-  format: {with: %r{\.(gif|jpg|png)\Z}i,
+  format: {with: /^.*\.(jpg|JPG|jpeg|JPEG|gif|GIF|pdf|PDF)$/g,
   message: 'must be a URL for GIF, JPG or PNG image.'}
   
   has_many :bugs
